@@ -1,0 +1,52 @@
+.scroll-view {
+    max-height: 80vh; /* Adjust as needed */
+    overflow-y: auto;
+}
+
+.item-list {
+    display: flex;
+    flex-direction: column; /* Ensure items are stacked vertically */
+    gap: 5px; /* Reduce gap between items */
+    list-style: none;
+    padding: 0;
+}
+
+.item {
+    width: 100%; /* Make items take full width */
+    box-sizing: border-box;
+}
+
+.item-image {
+    width: 50px; /* Make images smaller */
+    height: 50px; /* Make images smaller */
+    object-fit: cover;
+}
+
+.item-details {
+    padding: 2px; /* Reduce padding */
+    font-size: 12px; /* Make text smaller */
+}
+
+.pagination-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.pagination-buttons button {
+    padding: 5px 10px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.pagination-buttons button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.go-back-button {
+    margin-top: 10px;
+    padding: 5px 10px;
+    font-size: 12px;
+    cursor: pointer;
+}
