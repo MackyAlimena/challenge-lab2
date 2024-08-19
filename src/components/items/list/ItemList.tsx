@@ -40,7 +40,7 @@ const ItemList: React.FC = () => {
         <div className="item-list-container">
             <SearchAndFilter onSearch={handleSearch}/>
             <Link to="/grid">
-                <i className="fas fa-th"> Grid View</i> {/* Font Awesome grid icon */}
+                <i className="fas fa-th"> Grid View</i>
             </Link>
             {isLoading ? (
                 <Spinner/>

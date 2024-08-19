@@ -22,11 +22,17 @@ const SearchAndFilter: React.FC<SearchAndFilterProps> = ({ onSearch }) => {
     const handleSearch = async () => {
         try {
             const items = await fetchFilteredSpotifyItems(query, popularityMin, popularityMax, releaseDateStart, releaseDateEnd);
-            setOriginalItems(items); // Store the fetched items
-            onSearch(items);
-            setIsPopupVisible(false);
+            if (items.length === 0) {
+                setErrorMessage('There are no results.');
+            } else {
+                setOriginalItems(items); // Store the fetched items
+                onSearch(items);
+                setIsPopupVisible(false);
+                setErrorMessage('');
+            }
         } catch (error) {
             console.error('Error searching:', error);
+            setErrorMessage('Error searching for items.');
         }
     };
 
@@ -47,18 +53,18 @@ const SearchAndFilter: React.FC<SearchAndFilterProps> = ({ onSearch }) => {
     };
 
     const handleResetFilters = () => {
-    setQuery('');
-    setPopularityMin('');
-    setPopularityMax('');
-    setReleaseDateStart('');
-    setReleaseDateEnd(new Date().toISOString().split('T')[0]);
-    setErrorMessage('');
-    setIsPopupVisible(false);
-    setIsPopularityPopupVisible(false);
-    setIsReleaseDatePopupVisible(false);
-    onSearch(originalItems); // Use the original list of items
-    window.location.reload(); // Refresh the page
-};
+        setQuery('');
+        setPopularityMin('');
+        setPopularityMax('');
+        setReleaseDateStart('');
+        setReleaseDateEnd(new Date().toISOString().split('T')[0]);
+        setErrorMessage('');
+        setIsPopupVisible(false);
+        setIsPopularityPopupVisible(false);
+        setIsReleaseDatePopupVisible(false);
+        onSearch(originalItems); // Use the original list of items
+        window.location.reload(); // Refresh the page
+    };
 
     return (
         <div>
@@ -77,6 +83,7 @@ const SearchAndFilter: React.FC<SearchAndFilterProps> = ({ onSearch }) => {
                             <button onClick={() => setIsPopularityPopupVisible(true)}>Filtrar por Popularidad</button>
                             <button onClick={() => setIsReleaseDatePopupVisible(true)}>Filtrar por Fecha de Lanzamiento</button>
                             <button onClick={handleSearch}>Buscar</button>
+                            {errorMessage && <p className="error-message">{errorMessage}</p>}
                         </div>
                     </div>
                 </div>

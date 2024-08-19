@@ -4,6 +4,7 @@ import Spinner from '../../spinner/Spinner';
 import { SpotifyItem } from '../../../types/spotifyTypes';
 import { fetchSpotifyItems } from '../../../api/ApiList';
 import './GridView.css';
+import SearchAndFilter from "../../filter/SearchAndFilter";
 
 const GridView: React.FC = () => {
     const [items, setItems] = useState<SpotifyItem[]>([]);
@@ -38,10 +39,15 @@ const GridView: React.FC = () => {
         return <div>{error}</div>;
     }
 
+    const handleSearch = (searchResults: SpotifyItem[]) => {
+        setItems(searchResults);
+    };
+
     return (
         <div className="scroll-view">
+            <SearchAndFilter onSearch={handleSearch}/>
             <Link to="/">
-                <i className="fas fa-list"> List View</i> {/* Font Awesome list icon */}
+                <i className="fas fa-list"> List View</i>
             </Link>
             <div className="grid-container">
                 {items.map((item) => (
