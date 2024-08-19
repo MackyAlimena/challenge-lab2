@@ -36,7 +36,7 @@ const ItemList: React.FC = () => {
     };
 
     return (
-        <div>
+        <div className="item-list-container">
             <button className="go-back-button" onClick={() => navigate('/')}>
                 Go Back
             </button>
@@ -59,7 +59,7 @@ const ItemList: React.FC = () => {
                                             className="item-image"
                                         />
                                     </div>
-                                    <div className="item-details">
+                                    <div className="item-list">
                                         <h2>{item.name}</h2>
                                         <p>
                                             <strong>Artista:</strong> {item.artists.map(artist => artist.name).join(', ')}
@@ -80,7 +80,6 @@ const ItemList: React.FC = () => {
                 </button>
                 <button onClick={() => setPage((prev) => prev + 1)}>Next</button>
             </div>
-
         </div>
     );
 };

@@ -46,7 +46,12 @@ export interface SpotifyTrack {
         images: SpotifyImage[];
         release_date: string;
     };
-    popularity: number; // Add popularity property
+    popularity: number;
+    duration_ms: number;
+    available_markets: string[];
+    explicit?: boolean;
+    track_number?: number;
 }
+
 
 export interface SpotifyItem extends SpotifyTrack {}
