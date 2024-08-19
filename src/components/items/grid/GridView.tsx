@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import getAccessToken from '../../../auth/auth';
 import Spinner from '../../spinner/Spinner';
 import { SpotifyItem } from '../../../types/spotifyTypes';
+import { fetchSpotifyItems } from '../../../api/ApiList';
 import './GridView.css';
 
 const GridView: React.FC = () => {
@@ -18,22 +17,8 @@ const GridView: React.FC = () => {
             setIsLoading(true);
             setError(null);
             try {
-                const token = await getAccessToken();
-                const response = await axios.get(
-                    `https://api.spotify.com/v1/playlists/37i9dQZF1DXcBWIGoYBM5M/tracks`,
-                    {
-                        headers: { Authorization: `Bearer ${token}` },
-                        params: {
-                            limit: 10,
-                            offset: (page - 1) * 10,
-                        },
-                    }
-                );
-
-                setItems(response.data.items.map((item: any) => ({
-                    ...item.track,
-                    popularity: item.track.popularity // Ensure popularity is included
-                }))); // Adjust based on response structure
+                const fetchedItems = await fetchSpotifyItems(page);
+                setItems(fetchedItems);
             } catch (error) {
                 console.error('Error fetching items:', error);
                 setError('Error fetching items.');
