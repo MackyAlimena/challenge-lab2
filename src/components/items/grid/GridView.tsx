@@ -40,9 +40,9 @@ const GridView: React.FC = () => {
 
     return (
         <div className="scroll-view">
-            <button className="go-back-button" onClick={() => navigate('/')}>
-                Go Back
-            </button>
+            <Link to="/">
+                <i className="fas fa-list"> List View</i> {/* Font Awesome list icon */}
+            </Link>
             <div className="grid-container">
                 {items.map((item) => (
                     <div key={item.id} className="grid-item">

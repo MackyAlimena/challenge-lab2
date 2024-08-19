@@ -19,6 +19,23 @@
     border: 1px solid #ccc;
     border-radius: 8px;
     overflow: hidden;
+}/* Add spacing between the title, search and filter, and content */
+.item-list-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.item-list-container > *:not(:last-child) {
+    margin-bottom: 20px; /* Add space between children */
+}
+
+.item-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
 }
 
 .item-image {
@@ -41,4 +58,30 @@
 
 .item-details p {
     margin: 5px 0;
+}
+
+.pagination-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination-buttons button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    background-color: #146283;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.pagination-buttons button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.pagination-buttons button:hover:not(:disabled) {
+    background-color: #146283;
 }

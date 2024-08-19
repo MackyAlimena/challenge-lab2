@@ -5,6 +5,7 @@ import SearchAndFilter from '../../filter/SearchAndFilter';
 import { SpotifyItem } from '../../../types/spotifyTypes';
 import { fetchSpotifyItems } from '../../../api/ApiList';
 import './ItemList.css';
+import '@fortawesome/fontawesome-free/css/all.css'; // Corrected import path
 
 const ItemList: React.FC = () => {
     const [items, setItems] = useState<SpotifyItem[]>([]);
@@ -37,11 +38,10 @@ const ItemList: React.FC = () => {
 
     return (
         <div className="item-list-container">
-            <button className="go-back-button" onClick={() => navigate('/')}>
-                Go Back
-            </button>
             <SearchAndFilter onSearch={handleSearch}/>
-            <Link to="/grid">Switch to Grid View</Link>
+            <Link to="/grid">
+                <i className="fas fa-th"> Grid View</i> {/* Font Awesome grid icon */}
+            </Link>
             {isLoading ? (
                 <Spinner/>
             ) : error ? (
@@ -72,14 +72,14 @@ const ItemList: React.FC = () => {
                             </li>
                         ))}
                     </ul>
+                    <div className="pagination-buttons">
+                        <button onClick={() => setPage((prev) => Math.max(prev - 1, 1))} disabled={page === 1}>
+                            Previous
+                        </button>
+                        <button onClick={() => setPage((prev) => prev + 1)}>Next</button>
+                    </div>
                 </div>
             )}
-            <div className="pagination-buttons">
-                <button onClick={() => setPage((prev) => Math.max(prev - 1, 1))} disabled={page === 1}>
-                    Previous
-                </button>
-                <button onClick={() => setPage((prev) => prev + 1)}>Next</button>
-            </div>
         </div>
     );
 };
