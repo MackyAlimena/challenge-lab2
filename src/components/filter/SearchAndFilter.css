@@ -63,3 +63,9 @@
 .search-filter-container button:hover {
     background-color: #0f4a5a;
 }
+
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+}
