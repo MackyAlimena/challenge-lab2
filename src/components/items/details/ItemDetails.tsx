@@ -45,7 +45,10 @@ const ItemDetails: React.FC = () => {
     return (
         <div className="item-details-container">
             <Link to="/">
-                <i className="fas fa-list"> List View</i> {/* Font Awesome list icon */}
+                <i className="fas fa-list"> List View</i>
+            </Link>
+            <Link to="/grid">
+                <i className="fas fa-th"> Grid View</i>
             </Link>
             <div className="scroll-view">
                 <div className="item-details">

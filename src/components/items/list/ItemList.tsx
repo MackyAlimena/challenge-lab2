@@ -51,14 +51,12 @@ const ItemList: React.FC = () => {
                     <ul className="item-list">
                         {items.map((item) => (
                             <li key={item.id} className="item">
-                                <Link to={`/details/${item.id}`}>
-                                    <div>
-                                        <img
-                                            src={item.album.images[0]?.url || 'placeholder-image-url'}
-                                            alt={item.name}
-                                            className="item-image"
-                                        />
-                                    </div>
+                                <div>
+                                    <img
+                                        src={item.album.images[0]?.url || 'placeholder-image-url'}
+                                        alt={item.name}
+                                        className="item-image"
+                                    />
                                     <div className="item-list">
                                         <h2>{item.name}</h2>
                                         <p>
@@ -67,8 +65,9 @@ const ItemList: React.FC = () => {
                                         <p><strong>Álbum:</strong> {item.album.name}</p>
                                         <p><strong>Fecha de Lanzamiento:</strong> {item.album.release_date}</p>
                                         <p><strong>Popularidad:</strong> {item.popularity}</p>
+                                        <p><Link to={`/details/${item.id}`}>Ver detalles</Link></p>
                                     </div>
-                                </Link>
+                                </div>
                             </li>
                         ))}
                     </ul>
