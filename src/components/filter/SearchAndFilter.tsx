@@ -1,8 +1,7 @@
-// src/components/SearchAndFilter.tsx
 import React, { useState } from 'react';
 import axios from 'axios';
-import getAccessToken from '../auth/auth';
-import { SpotifyItem } from '../types/spotifyTypes'; // Adjust the path as needed
+import getAccessToken from '../../auth/auth';
+import { SpotifyItem } from '../../types/spotifyTypes'; // Adjust the path as needed
 
 interface SearchAndFilterProps {
     onSearch: (items: SpotifyItem[]) => void;

@@ -40,7 +40,7 @@
     opacity: 0.5;
 }
 
-/* Responsive styles */
+/* Responsive otherStyles */
 @media (max-width: 1200px) {
     .grid-item {
         flex: 1 1 calc(33.333% - 10px); /* 3 items per row */

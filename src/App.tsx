@@ -1,11 +1,11 @@
 import React from 'react';
-import 'dotenv';
+//import 'dotenv';
 import { Routes, Route } from 'react-router-dom';
-import ItemList from './components/ItemList';
-import ItemDetails from './components/ItemDetails';
-import GridView from './components/GridView';
-import './styles/global.css';
-require('dotenv').config();
+import ItemList from './components/items/list/ItemList';
+import ItemDetails from './components/items/details/ItemDetails';
+import GridView from './components/items/grid/GridView';
+import './otherStyles/global.css';
+//require('dotenv').config();
 
 const App: React.FC = () => {
     return (

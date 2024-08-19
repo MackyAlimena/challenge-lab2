@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import getAccessToken from '../auth/auth';
-import Spinner from './Spinner';
-import { SpotifyItem } from '../types/spotifyTypes';
-import '../styles/GridView.css';
+import getAccessToken from '../../../auth/auth';
+import Spinner from '../../spinner/Spinner';
+import { SpotifyItem } from '../../../types/spotifyTypes';
+import './GridView.css';
 
 const GridView: React.FC = () => {
     const [items, setItems] = useState<SpotifyItem[]>([]);
